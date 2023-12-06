@@ -7,8 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
+
 
 @RestController
+@CrossOrigin
 @RequestMapping("/singin")
 public class LoginController {
 
@@ -17,10 +24,15 @@ public class LoginController {
 
 
     @PostMapping("")
-    public Employe singin(Login login){
-
+    public Employe singin(@RequestBody Login login){
+System.out.println("invoke singin");
         return loginService.login(login);
 
 
     }
+	/**
+	@GetMapping("")
+	public Employe get(){
+		return "hello";
+	}*/
 }

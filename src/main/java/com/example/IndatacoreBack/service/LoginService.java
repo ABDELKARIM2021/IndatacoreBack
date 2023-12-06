@@ -12,12 +12,19 @@ public class LoginService {
     private EmployeRepository employeRepository;
     public Employe login(Login login){
 
-      Employe  checkEmploye= employeRepository.findEmployeByEmailAndPassword(login.getEmail(),login.getPassword());
-        if (checkEmploye!=null){
+      Employe checkEmploye = employeRepository.findEmployeByEmail(login.getEmail());
+
+        if (checkEmploye != null && checkEmploye.getPassword().equals(login.getPassword())) {
             return checkEmploye;
-        }
-        else {
+        } else {
             return null;
         }
-    }
+		
+		
+}
+/**
+public Employe test(Login login){
+	      Employe checkEmploye = employeRepository.findEmployeByEmail(login.getEmail());
+return checkEmploye;
+}*/
 }
